@@ -1,5 +1,8 @@
 FROM ubuntu
 
+#Add Files
+ADD startup.sh /startup.sh
+
 #Install Prerequisites
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
 RUN apt-get install git x11vnc openbox -y
@@ -11,3 +14,9 @@ RUN cd /root/noVNC/utils && git clone https://github.com/kanaka/websockify webso
 
 #Cleanup
 RUN apt-get autoclean && apt-get autoremove
+
+#Run
+CMD /startup.sh
+
+#Ports
+EXPOSE 6080
