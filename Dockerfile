@@ -6,6 +6,7 @@ ADD startup.sh /startup.sh
 
 RUN apt-get update -y && \
     apt-get install -y git x11vnc wget python python-numpy unzip Xvfb firefox openbox geany menu && \
+    apt-get install -y gnucash && \
     cd /root && git clone https://github.com/kanaka/noVNC.git && \
     cd noVNC/utils && git clone https://github.com/kanaka/websockify websockify && \
     cd /root && \
