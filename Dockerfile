@@ -2,6 +2,7 @@ FROM ubuntu
 
 #Add Files
 ADD startup.sh /startup.sh
+RUN chmod +x /startup.sh
 
 #Install Prerequisites
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
