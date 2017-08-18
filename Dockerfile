@@ -1,12 +1,14 @@
 FROM ubuntu
 
+ENV DEBIAN_FRONTEND noninteractive
+
 #Add Files
 ADD startup.sh /startup.sh
 RUN chmod +x /startup.sh
 
 #Install Prerequisites
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
-RUN apt-get install git x11vnc openbox xvfb -y
+RUN apt-get install git x11vnc wget python python-numpy unzip Xvfb firefox openbox geany menu -y
 RUN apt-get install gnucash -y
 
 #Get noVNC
