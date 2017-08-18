@@ -6,7 +6,7 @@ RUN chmod +x /startup.sh
 
 #Install Prerequisites
 RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
-RUN apt-get install git x11vnc openbox -y
+RUN apt-get install git x11vnc openbox Xvfb -y
 RUN apt-get install gnucash -y
 
 #Get noVNC
