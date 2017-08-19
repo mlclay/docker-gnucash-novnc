@@ -7,7 +7,7 @@ RUN chmod 0755 /startup.sh
 
 #Install packages
 RUN apt-get update -y
-RUN apt-get install -y git x11vnc wget python python-numpy unzip Xvfb openbox menu
+RUN apt-get install -y git x11vnc Xvfb openbox menu
 RUN apt-get install -y gnucash
 
 #Clone additional repositories
