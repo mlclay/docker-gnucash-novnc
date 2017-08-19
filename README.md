@@ -16,3 +16,5 @@ Then access via http://localhost:6080
 Got help from the following Repos / links
 
 https://github.com/paimpozhil/docker-novnc
+
+https://github.com/Kaixhin/dockerfiles/tree/master/vnc
