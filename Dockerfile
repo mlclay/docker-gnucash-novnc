@@ -16,8 +16,8 @@ RUN cd /root/noVNC/utils && git clone https://github.com/kanaka/websockify webso
 
 #Cleanup after install
 RUN apt-get remove -y git
-RUN apt-get autoclean
-RUN apt-get autoremove
+RUN apt-get autoclean -y
+RUN apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/*
 
 CMD /startup.sh
