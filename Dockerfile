@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:zesty
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -7,7 +7,7 @@ RUN chmod 0755 /startup.sh
 
 #Install packages
 RUN apt-get update -y
-RUN apt-get install -y git x11vnc Xvfb openbox menu
+RUN apt-get install -y git x11vnc xvfb openbox menu
 RUN apt-get install -y gnucash
 
 #Clone additional repositories
