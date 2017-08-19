@@ -7,7 +7,7 @@ RUN chmod 0755 /startup.sh
 
 #Install packages
 RUN apt-get update -y
-RUN apt-get install -y git x11vnc xvfb openbox menu
+RUN apt-get install -y git x11vnc xvfb openbox net-tools menu
 RUN apt-get install -y gnucash
 
 #Clone additional repositories
