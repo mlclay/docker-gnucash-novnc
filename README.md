@@ -9,6 +9,7 @@ Start the container via
 ```bash
 docker run -td -p 6080:6080 bertlorenz/gnucash
 ```
+Then access via http://localhost:6080
 
 ## Credits
 
