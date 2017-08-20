@@ -20,3 +20,5 @@ https://github.com/paimpozhil/docker-novnc
 https://github.com/Kaixhin/dockerfiles/tree/master/vnc
 
 https://wiki.gnucash.org/wiki/Building#Ubuntu_14.04_LTS_.28Trusty_Tahr.29
+
+https://github.com/potz/docker-gnucash
