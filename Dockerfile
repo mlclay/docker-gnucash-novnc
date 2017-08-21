@@ -7,12 +7,13 @@ RUN chmod 0755 /startup.sh
 
 #Install packages
 RUN apt-get update -y && \
-    apt-get install -y git x11vnc Xvfb openbox net-tools python-numpy menu && \
-    git clone https://github.com/kanaka/noVNC.git /root/noVNC/ && \
-    git clone https://github.com/kanaka/websockify /root/noVNC/utils/websockify && \
-    apt-get remove -y git && \
-    apt-get autoremove -y && \
-    apt-get autoclean -y
+	apt-get install -y git x11vnc Xvfb openbox net-tools python-numpy menu &&  \
+	cd /opt/ && \
+		git clone https://github.com/kanaka/noVNC.git noVNC && \
+		git clone https://github.com/kanaka/websockify noVNC/utils/websockify && \
+	apt-get remove -y git && \
+	apt-get autoremove -y && \
+	apt-get autoclean -y
 
 #Install GnuCash from Source
 RUN	apt-get update -y && \

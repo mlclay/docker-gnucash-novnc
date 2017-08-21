@@ -1,6 +1,6 @@
 #!/bin/bash
 export DISPLAY=:1
-export NOVNC=/root/noVNC
+export NOVNC=/opt/noVNC
 Xvfb :1 -screen 0 1440x900x16 &
 sleep 5
 openbox-session&
