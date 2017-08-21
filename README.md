@@ -7,7 +7,7 @@ also some first playground with docker and github
 ## How to
 Start the container via
 ```bash
-docker run -td -p 6080:6080 bertlorenz/gnucash
+docker run -td -v /your/local/volume:/var/gnucash-p 6080:6080 bertlorenz/gnucash
 ```
 Then access via http://localhost:6080
 

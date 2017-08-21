@@ -3,7 +3,8 @@ FROM ubuntu:trusty
 ENV DEBIAN_FRONTEND noninteractive
 
 ADD startup.sh /startup.sh
-RUN chmod 0755 /startup.sh
+RUN chmod 0755 /startup.sh && \
+	mkdir /var/gnucash
 
 #Install packages
 RUN apt-get update -y && \
@@ -16,7 +17,7 @@ RUN apt-get update -y && \
 	apt-get autoclean -y
 
 #Install GnuCash from Source
-RUN	apt-get update -y && \
+RUN apt-get update -y && \
 	apt-get build-dep -y gnucash && \
 	apt-get purge -y guile-2.0 && \
 	apt-get install -y wget slib libgnomeui-common libgnomeui-dev guile-1.8 guile-1.8-dev checkinstall && \
@@ -33,6 +34,9 @@ RUN	apt-get update -y && \
 	apt-get remove -y build-essential autoconf intltool libtool && \
 	apt-get autoremove -y && \
 	apt-get autoclean -y
+
+#Setup Volumes
+VOLUME /var/gnucash
 
 CMD /startup.sh
 EXPOSE 6080
