@@ -1,4 +1,19 @@
 #!/bin/bash
+
+#Define locale
+if [[ ! -z  $LOCALE ]]
+then
+	if [ "$LOCALE" != "de_DE" ] && [ "$LOCALE" != "en_US" ] && [ "$LOCALE" != "en_GB" ] 
+	then
+		locale-gen $LOCALE
+	fi
+	
+	export LANG=$LOCALE
+	export LANGUAGE=$LOCALE
+	export LC_ALL=$LOCALE
+fi
+
+#Startup
 export DISPLAY=:1
 export NOVNC=/opt/noVNC
 Xvfb :1 -screen 0 1440x900x16 &

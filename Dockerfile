@@ -6,6 +6,10 @@ ADD startup.sh /startup.sh
 RUN chmod 0755 /startup.sh && \
 	mkdir /var/gnucash
 
+#Setup Language
+RUN apt-get update && apt-get install -y locales && \
+	locale-gen de_DE en_US en_GB 
+
 #Install packages
 WORKDIR /opt
 RUN apt-get update -y && \
