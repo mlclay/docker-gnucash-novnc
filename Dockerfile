@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -9,7 +9,7 @@ RUN chmod 0755 /startup.sh && \
 #Install packages
 WORKDIR /opt
 RUN apt-get update -y && \
-	apt-get install -y git x11vnc Xvfb openbox net-tools python-numpy menu &&  \
+	apt-get install -y git x11vnc xvfb openbox net-tools python-numpy menu &&  \
 	git clone https://github.com/kanaka/noVNC.git noVNC && \
 	git clone https://github.com/kanaka/websockify noVNC/utils/websockify && \
 	apt-get remove -y git && \
