@@ -40,5 +40,7 @@ RUN apt-get update -y && \
 #Setup Volumes
 VOLUME /var/gnucash
 
+#Finalize
+WORKDIR /var/gnucash
 CMD /startup.sh
 EXPOSE 6080
