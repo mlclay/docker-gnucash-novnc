@@ -28,10 +28,11 @@ RUN apt-get update -y && \
 	apt-get purge -y guile-2.0 && \
 	apt-get install -y \
 		wget slib libgnomeui-common libgnomeui-dev guile-1.8 guile-1.8-dev checkinstall \
-		build-essential autoconf intltool libtool && \
+		build-essential autoconf intltool libtool \
+		aqbanking-tools && \
 	wget http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-2.6.17.tar.bz2 && \
 	tar xvjf gnucash-2.6.17.tar.bz2 && rm gnucash-2.6.17.tar.bz2 && mv gnucash-2.6.17/* . && rmdir gnucash-2.6.17 && \
-	./configure --enable-compile-warnings --with-html-engine=webkit && \
+	./configure --enable-compile-warnings --with-html-engine=webkit --enable-aqbanking && \
 	make && make install && checkinstall -y && ldconfig && \
 	rm -r /tmp/build && \
 	apt-get remove -y \
