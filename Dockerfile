@@ -1,6 +1,7 @@
 FROM ubuntu:xenial
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV VGNUCASH=2.6.18
 
 ADD startup.sh /startup.sh
 RUN chmod 0755 /startup.sh && \
@@ -30,8 +31,8 @@ RUN apt-get update -y && \
 		wget slib libgnomeui-common libgnomeui-dev guile-1.8 guile-1.8-dev checkinstall \
 		build-essential autoconf intltool libtool \
 		aqbanking-tools && \
-	wget http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-2.6.18.tar.bz2 && \
-	tar xvjf gnucash-2.6.18.tar.bz2 && rm gnucash-2.6.18.tar.bz2 && mv gnucash-2.6.18/* . && rmdir gnucash-2.6.18 && \
+	wget http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-$VGNUCASH.tar.bz2 && \
+	tar xvjf gnucash-$VGNUCASH.tar.bz2 && rm gnucash-$VGNUCASH.tar.bz2 && mv gnucash-$VGNUCASH/* . && rmdir gnucash-$VGNUCASH && \
 	./configure --enable-compile-warnings --with-html-engine=webkit --enable-aqbanking && \
 	make && make install && checkinstall -y && ldconfig && \
 	rm -r /tmp/build && \
