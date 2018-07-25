@@ -33,7 +33,7 @@ RUN apt-get update -y && \
 		build-essential autoconf intltool libtool \
 		aqbanking-tools && \
 	wget "https://downloads.sourceforge.net/project/gnucash/gnucash (stable)/$VGNUCASH/gnucash-$RGNUCASH.tar.bz2" && \
-	tar xvjf gnucash-$RGNUCASH.tar.bz2 && rm gnucash-$RGNUCASH.tar.bz2 && mv gnucash-$RGNUCASH/* . && rmdir gnucash-$RGNUCASH && \
+	tar xvjf gnucash-$RGNUCASH.tar.bz2 && rm gnucash-$RGNUCASH.tar.bz2 && mv gnucash-$VGNUCASH/* . && rmdir gnucash-$VGNUCASH && \
 	./configure --enable-compile-warnings --with-html-engine=webkit --enable-aqbanking && \
 	make && make install && checkinstall -y && ldconfig && \
 	rm -r /tmp/build && \
