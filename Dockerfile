@@ -1,8 +1,8 @@
 FROM ubuntu:xenial
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV VGNUCASH=2.6.18
-ENV RGNUCASH=2.6.18-1
+ENV VGNUCASH=3.2
+ENV RGNUCASH=3.2
 
 ADD startup.sh /startup.sh
 RUN chmod 0755 /startup.sh && \
