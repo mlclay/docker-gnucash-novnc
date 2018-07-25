@@ -32,9 +32,6 @@ RUN apt-get update -y && \
 		wget slib libgnomeui-common libgnomeui-dev guile-1.8 guile-1.8-dev checkinstall \
 		build-essential autoconf intltool libtool \
 		aqbanking-tools && \
-
-https://downloads.sourceforge.net/project/gnucash/gnucash%20%28stable%29/2.6.18/gnucash-2.6.18-1.tar.bz2
-
 	wget "https://downloads.sourceforge.net/project/gnucash/gnucash (stable)/$VGNUCASH/gnucash-$RGNUCASH.tar.bz2" && \
 	tar xvjf gnucash-$RGNUCASH.tar.bz2 && rm gnucash-$RGNUCASH.tar.bz2 && mv gnucash-$RGNUCASH/* . && rmdir gnucash-$RGNUCASH && \
 	./configure --enable-compile-warnings --with-html-engine=webkit --enable-aqbanking && \
