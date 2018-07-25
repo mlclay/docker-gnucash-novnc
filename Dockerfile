@@ -2,6 +2,7 @@ FROM ubuntu:xenial
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV VGNUCASH=2.6.18
+ENV RGNUCASH=2.6.18-1
 
 ADD startup.sh /startup.sh
 RUN chmod 0755 /startup.sh && \
@@ -31,9 +32,11 @@ RUN apt-get update -y && \
 		wget slib libgnomeui-common libgnomeui-dev guile-1.8 guile-1.8-dev checkinstall \
 		build-essential autoconf intltool libtool \
 		aqbanking-tools && \
-		
-	wget https://sourceforge.net/projects/gnucash/files/gnucash%20%28stable%29/$VGNUCASH/gnucash-$VGNUCASH.tar.bz2/download && \
-	tar xvjf gnucash-$VGNUCASH.tar.bz2 && rm gnucash-$VGNUCASH.tar.bz2 && mv gnucash-$VGNUCASH/* . && rmdir gnucash-$VGNUCASH && \
+
+https://downloads.sourceforge.net/project/gnucash/gnucash%20%28stable%29/2.6.18/gnucash-2.6.18-1.tar.bz2
+
+	wget "https://downloads.sourceforge.net/project/gnucash/gnucash (stable)/$VGNUCASH/gnucash-$RGNUCASH.tar.bz2" && \
+	tar xvjf gnucash-$RGNUCASH.tar.bz2 && rm gnucash-$RGNUCASH.tar.bz2 && mv gnucash-$RGNUCASH/* . && rmdir gnucash-$RGNUCASH && \
 	./configure --enable-compile-warnings --with-html-engine=webkit --enable-aqbanking && \
 	make && make install && checkinstall -y && ldconfig && \
 	rm -r /tmp/build && \
