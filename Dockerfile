@@ -1,16 +1,9 @@
-FROM ubuntu:xenial
+FROM ubuntu:disco
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV VGNUCASH=3.2
-ENV RGNUCASH=3.2
-
-ADD startup.sh /startup.sh
-RUN chmod 0755 /startup.sh && \
-	mkdir /var/gnucash
 
 #Setup Language
-RUN apt-get update && apt-get install -y locales && \
-	locale-gen de_DE en_US en_GB 
+RUN apt-get update && apt-get install -y locales && locale-gen en_US
 
 #Install packages
 WORKDIR /opt
@@ -23,29 +16,18 @@ RUN apt-get update -y && \
 	apt-get autoclean -y && \
 	rm -rf /var/lib/apt/lists/*
 
-#Install GnuCash from Source
-WORKDIR /tmp/build/gnucash
+#Install GnuCash
 RUN apt-get update -y && \
-	apt-get build-dep -y gnucash && \
-	apt-get purge -y guile-2.0 && \
-	apt-get install -y \
-		wget slib libgnomeui-common libgnomeui-dev guile-1.8 guile-1.8-dev checkinstall \
-		build-essential autoconf intltool libtool \
-		aqbanking-tools && \
-	wget "https://downloads.sourceforge.net/project/gnucash/gnucash (stable)/$VGNUCASH/gnucash-$RGNUCASH.tar.bz2" && \
-	tar xvjf gnucash-$RGNUCASH.tar.bz2 && rm gnucash-$RGNUCASH.tar.bz2 && mv gnucash-$VGNUCASH/* . && rmdir gnucash-$VGNUCASH && \
-	./configure --enable-compile-warnings --with-html-engine=webkit --enable-aqbanking && \
-	make && make install && checkinstall -y && ldconfig && \
-	rm -r /tmp/build && \
-	apt-get remove -y \
-		wget slib libgnomeui-common libgnomeui-dev guile-1.8-dev checkinstall \
-		build-essential autoconf intltool libtool && \
+	apt-get install -y gnucash && \
 	apt-get autoremove -y && \
 	apt-get autoclean -y && \
 	rm -rf /var/lib/apt/lists/*
 
 #Setup Volumes
+RUN  mkdir /var/gnucash
 VOLUME /var/gnucash
+
+COPY startup.sh /startup.sh
 
 #Finalize
 WORKDIR /var/gnucash
